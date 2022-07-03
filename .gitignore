@@ -1,0 +1,8 @@
+% Memory
+*.pdf
+*.aux
+*.fls
+*.log
+*.out
+*.gz
+*latexmk
