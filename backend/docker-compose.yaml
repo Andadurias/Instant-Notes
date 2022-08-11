@@ -1,0 +1,19 @@
+version: '3'
+services:
+  cassandra:
+    image: cassandra:latest
+    ports:
+      - "9042:9042"
+    environment:
+      - CASSANDRA_CLUSTER_NAME=memories
+    restart: always
+    volumes:
+      - ./.data_dir:/var/lib/cassandra
+  cassandra-load-keyspace:
+    container_name: cassandra-load-keyspace
+    image: cassandra:latest
+    depends_on:
+        - cassandra
+    volumes:
+        - ./scripts/data.cql:/schema.cql 
+    command: /bin/bash -c "sleep 60 && echo loading cassandra keyspace && cqlsh cassandra -f /schema.cql"
