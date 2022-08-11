@@ -6,3 +6,9 @@
 *.out
 *.gz
 *latexmk
+
+% backend
+backend/.data_dir
+
+%vscode 
+settings.json
