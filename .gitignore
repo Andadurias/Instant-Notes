@@ -9,6 +9,7 @@
 
 % backend
 backend/.data_dir
+backend/fastapi-docker/env
 
 %vscode 
 settings.json
