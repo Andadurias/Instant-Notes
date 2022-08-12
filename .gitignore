@@ -8,8 +8,9 @@
 *latexmk
 
 % backend
-backend/.data_dir
+backend/database/.data_dir
 backend/fastapi-docker/env
 
 %vscode 
 settings.json
+.DS_Store
