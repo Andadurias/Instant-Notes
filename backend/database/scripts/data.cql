@@ -40,5 +40,7 @@ VALUES (
 );
 
 
+
+
 -- Read some data 
 SELECT * FROM store.cards;
