@@ -2,7 +2,7 @@ import React from "react"
 import "../../components/buttons"
 import { AppButton, AppContainer } from "../../components/buttons"
 import { deep_saffron, madder_lake, metalic_seaweed, } from "../../constants/colors"
-import { menu } from "../../constants/languajes/EN/menu"
+import { menu } from "../../constants/languages/EN/menu"
 
 export function HomeScreen({ navigation }:any){
     return(

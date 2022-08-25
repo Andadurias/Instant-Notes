@@ -4,7 +4,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import {HomeScreen} from './views/home/home';
 import { CreateCardView } from './views/create_card/create_card';
-import { menu } from './constants/languajes/EN/menu';
+import { menu } from './constants/languages/EN/menu';
 import { RemaindersView } from './views/remainders/remainders';
 import { SearchView } from './views/search/search';
 const Stack = createNativeStackNavigator();
