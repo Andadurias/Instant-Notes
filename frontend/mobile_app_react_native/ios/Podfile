@@ -6,7 +6,7 @@ install! 'cocoapods', :deterministic_uuids => false
 
 production = ENV["PRODUCTION"] == "1"
 
-target 'mobile_app_react_native' do
+target 'mobile_app_react_native_android' do
   config = use_native_modules!
 
   # Flags change depending on the env values.
@@ -23,7 +23,7 @@ target 'mobile_app_react_native' do
     :app_path => "#{Pod::Config.instance.installation_root}/.."
   )
 
-  target 'mobile_app_react_nativeTests' do
+  target 'mobile_app_react_native_androidTests' do
     inherit! :complete
     # Pods for testing
   end
