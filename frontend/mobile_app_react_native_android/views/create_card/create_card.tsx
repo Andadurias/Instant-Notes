@@ -1,11 +1,14 @@
 import React from "react";
-import { Text, View } from "react-native";
+import { Text, TextInput } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 import { TagField } from "./tag_field";
+
+
 export function CreateCardView({ navigation }:any){
+    
     return (
-        <View>
-            <Text> You are on the Create card View 🥳</Text>
-            <TagField />
-        </View>
+        <SafeAreaView>
+            <TagField/>
+        </SafeAreaView>
     )
 }
