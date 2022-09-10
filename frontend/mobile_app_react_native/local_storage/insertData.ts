@@ -2,11 +2,17 @@ import { enablePromise, openDatabase, SQLiteDatabase } from 'react-native-sqlite
 import { tableName } from '../constants/local_storage';
 
 interface dataItem {
-    tag : String
+    tag : String,
+    card : String
 }
 const insertData = async (db: SQLiteDatabase, dataItems: dataItem) => {
-    const insertQuery =
-      `INSERT OR REPLACE INTO ${tableName}(value) values ${dataItems.tag});` 
+    
+  const insertQuery =
+      `INSERT OR REPLACE INTO ${tableName} (value)
+        values 
+         ('${dataItems.tag}');` ;
+
+    console.log(insertQuery);
     return db.executeSql(insertQuery);
 };
 
