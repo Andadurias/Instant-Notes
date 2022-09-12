@@ -5,14 +5,11 @@ interface dataItem {
     tag : String,
     card : String
 }
-const insertData = async (db: SQLiteDatabase, dataItems: dataItem) => {
-    
+const insertData = async (db: SQLiteDatabase, dataItems: dataItem) => {  
   const insertQuery =
       `INSERT OR REPLACE INTO ${tableName} (value)
         values 
          ('${dataItems.tag}');` ;
-
-    console.log(insertQuery);
     return db.executeSql(insertQuery);
 };
 
