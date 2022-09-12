@@ -1,14 +1,22 @@
 import {SQLiteDatabase} from 'react-native-sqlite-storage';
-import { tableName } from '../constants/local_storage';
+import { tableName, userInformationTable } from '../constants/local_storage';
 
-const createTable = async (db: SQLiteDatabase) => {
+const createTables = async (db: SQLiteDatabase) => {
   // create table if not exists
   const query = `CREATE TABLE IF NOT EXISTS ${tableName}(
         value TEXT NOT NULL
     );`;
 
-  await db.executeSql(query);
+  // User information table
+  const userInformationQuery = 
+  `CREATE TABLE IF NOT EXISTS ${userInformationTable.tableName}(
+    ${userInformationTable.id} ${userInformationTable.idType},
+    ${userInformationTable.userName} ${userInformationTable.userNameType},
+    ${userInformationTable.mail} ${userInformationTable.mailType},
+    ${userInformationTable.password} ${userInformationTable.passwordType}
+);`
+  console.log(userInformationQuery)
+  await db.executeSql(userInformationQuery);
 };
-// TODO we need to adapt the port names
 
-export default createTable;
+export default createTables;
