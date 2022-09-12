@@ -19,13 +19,28 @@ export const userInformationTable = {
     passwordType : 'TEXT NOT NULL'
 }
 
+// tagsTable
+const tag = 'tag'
+const card = 'cardID'
+
 export const tagsTable = {
     tableName : 'Tags',
     // columns 
-    tag : 'tag',
-    card : 'cardID',
-    idType : 'TEXT NOT NULL',
+    tag : tag,
+    card : card,
+    // types
+    tagType : 'TEXT NOT NULL',
     cardType : 'TEXT NOT NULL',
     // options
-    options : `PRIMARY KEY (${tagsTable.tag}, ${tagsTable.card})`
+    options : `PRIMARY KEY (${tag}, ${card})`
+}
+
+export const cardTable = {
+    tableName : 'Cards',
+    // columns 
+    id : 'cardID',
+    content : 'content',
+    // types
+    idType : 'TEXT PRIMARY KEY',
+    contentType : 'TEXT NOT NULL'
 }
