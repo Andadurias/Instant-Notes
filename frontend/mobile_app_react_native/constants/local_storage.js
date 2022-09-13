@@ -9,20 +9,32 @@ export const tableName = 'Test';
 export const userInformationTable = {
     tableName : 'UserInformation',
     // columns 
-    id : 'userID', idType : 'TEXT PRIMARY KEY',
+    id : 'userID', 
     userName : 'userName', 
     mail : 'mail', 
     password : 'password',
     // type of the columns 
+    idType : 'TEXT PRIMARY KEY AUTOINCREMENT',
     userNameType : 'TEXT NOT NULL',
     mailType : 'TEXT NOT NULL',
     passwordType : 'TEXT NOT NULL'
 }
 
-// tagsTable
-const tag = 'tag'
+// CARDS TABLE 
 const card = 'cardID'
-
+export const cardTable = {
+    tableName : 'Cards',
+    // columns 
+    id : card,
+    content : 'content',
+    creationTime : 'creationTime',
+    // types
+    idType : 'INTEGER PRIMARY KEY',
+    contentType : 'TEXT NOT NULL', // this is the only value we have to insert 
+    creationTimeType : 'TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL'
+}
+// TAGS TABLE 
+const tag = 'tag'
 export const tagsTable = {
     tableName : 'Tags',
     // columns 
@@ -32,15 +44,8 @@ export const tagsTable = {
     tagType : 'TEXT NOT NULL',
     cardType : 'TEXT NOT NULL',
     // options
-    options : `PRIMARY KEY (${tag}, ${card})`
-}
-
-export const cardTable = {
-    tableName : 'Cards',
-    // columns 
-    id : 'cardID',
-    content : 'content',
-    // types
-    idType : 'TEXT PRIMARY KEY',
-    contentType : 'TEXT NOT NULL'
+    options : 
+    `FOREIGN KEY(${card}) REFERENCES ${cardTable.tableName}(${cardTable.id}),
+    PRIMARY KEY (${tag}, ${card})
+    `
 }
