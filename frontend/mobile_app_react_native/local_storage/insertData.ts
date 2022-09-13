@@ -1,4 +1,4 @@
-import { enablePromise, openDatabase, SQLiteDatabase } from 'react-native-sqlite-storage';
+import {SQLiteDatabase } from 'react-native-sqlite-storage';
 import { tableName } from '../constants/local_storage';
 
 interface dataItem {

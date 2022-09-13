@@ -14,7 +14,7 @@ export const userInformationTable = {
     mail : 'mail', 
     password : 'password',
     // type of the columns 
-    idType : 'TEXT PRIMARY KEY AUTOINCREMENT',
+    idType : 'INTEGER PRIMARY KEY AUTOINCREMENT',
     userNameType : 'TEXT NOT NULL',
     mailType : 'TEXT NOT NULL',
     passwordType : 'TEXT NOT NULL'

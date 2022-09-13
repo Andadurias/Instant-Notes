@@ -33,7 +33,7 @@ export function SearchView({ navigation }:any){
             {
                 results.map( r =>(
                         <View key={Math.random()}>
-                            <Text>{r["value"]}</Text>
+                            <Text>{r["content"]}</Text>
                         </View>
                     )
                 )
