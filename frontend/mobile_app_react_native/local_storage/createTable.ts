@@ -49,7 +49,7 @@ const createTagsTable = async (db: SQLiteDatabase) => {
 const createTables = async (db: SQLiteDatabase) => {
   // drop tables
   // discommend 
-  dropTables(db);
+  //dropTables(db);
     try {
       await createUserInformationTable(db);
       await createCardsTable(db);
