@@ -14,12 +14,24 @@ const insertContent = async (db: SQLiteDatabase, content : String ) => {
         (${cardTable.content})
         values 
        ('${content}');` ;
-       console.log(insertQuery)
     return db.executeSql(insertQuery);
 
 }
 // TODO IN ARRAY TAG AND STRING
-const insertTag = async (db: SQLiteDatabase, tag : String, cardID : String ) => {
+const insertTag = async (
+    db: SQLiteDatabase, tags: String[], cardID  ) => {
+
+    const  values =  tags.reduce(
+        (previous, current) => previous + "," + `('${current}', ${cardID}) \n`,
+        "").substring(1)
+    
+        const insertQuery = 
+        `INSERT OR REPLACE INTO ${tagsTable.tableName}
+        (${tagsTable.tag}, ${tagsTable.card})
+        values
+        ${values};
+        `;
+    return db.executeSql(insertQuery)
     
 };
 
@@ -31,7 +43,7 @@ interface cardData {
 const insertCard = async (db: SQLiteDatabase, card : cardData ) => {  
     try {
         const cardInsertion = await insertContent(db, card.content)
-        console.log(cardInsertion)   
+        const tagInsertion = await insertTag(db, card.tags, cardInsertion[0].insertId)  
     } catch (error) {
        console.error(error) 
     }
