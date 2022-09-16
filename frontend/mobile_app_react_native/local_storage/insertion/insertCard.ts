@@ -39,11 +39,10 @@ interface cardData {
     content : String,
     tags : String[]
 }
-// TODO CREATE CARD ID WITH DATE AND 
 const insertCard = async (db: SQLiteDatabase, card : cardData ) => {  
     try {
         const cardInsertion = await insertContent(db, card.content)
-        const tagInsertion = await insertTag(db, card.tags, cardInsertion[0].insertId)  
+        await insertTag(db, card.tags, cardInsertion[0].insertId)  
     } catch (error) {
        console.error(error) 
     }
