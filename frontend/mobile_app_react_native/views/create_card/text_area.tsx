@@ -6,9 +6,8 @@ export const TextArea = ({text, textSetter}) => {
     return (
         <TextInput
             editable
-            maxLength={40}
             multiline
-            onChange={textSetter}
+            onChangeText={input => textSetter(input)}
             placeholder={views.create_card.text_area.write_card}
             style={styles.input}
             value={text} 

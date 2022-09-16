@@ -14,7 +14,7 @@ export function CreateCardView({ navigation }:any){
             <TagField tags={tags} tagSetter={setTags}/>
             <TextArea text={card} textSetter={setCard}/>
             <SubmitButton
-                onPress={submitAction(tags, card, setTags, setCard)}
+                onPress={() => submitAction(tags, card, setTags, setCard)}
                 title={"Submit"}
                 background_color={'#007AFF'}
             />
