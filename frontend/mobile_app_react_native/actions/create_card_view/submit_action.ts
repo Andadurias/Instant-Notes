@@ -5,6 +5,7 @@ import {getDBConnection} from "../../local_storage/main";
 import { enablePromise } from "react-native-sqlite-storage";
 import insertCard from "../../local_storage/insertion/insertCard";
 import createTables from "../../local_storage/createTable";
+import tagsProcessing from "../tagsProcessing/tagsProcessing";
 
 const submitAction = async (tags:String, text:String, tagsSetter, textSetter) => {
     //Alert.alert(text)
@@ -13,7 +14,7 @@ const submitAction = async (tags:String, text:String, tagsSetter, textSetter) =>
             try{
                 const db = await getDBConnection();
                 await createTables(db);
-                await insertCard(db, {tags: [tags], content: text})
+                await insertCard(db, {tags: tagsProcessing(tags), content: text})
                 tagsSetter("")
                 textSetter("")
             } catch(error){
