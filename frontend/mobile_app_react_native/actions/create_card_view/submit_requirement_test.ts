@@ -1,4 +1,4 @@
-const requirements = (tags, cards) => {
+const requirements = (tags:String, cards:String):Boolean => {
     return (
         tagsRequirements(tags)
         &&
@@ -8,14 +8,14 @@ const requirements = (tags, cards) => {
 
 export default requirements
 
-const tagsRequirements = (tags) => {
+export const tagsRequirements = (tags:String):Boolean => {
     return containsAnyLetter(tags)
 }
 
-const cardsRequirements = (cards) => {
+const cardsRequirements = (cards:String):Boolean => {
     return containsAnyLetter(cards)
 }
 
-function containsAnyLetter(str) {
+function containsAnyLetter(str : any) :Boolean {
     return /[a-zA-Z]/.test(str);
   }

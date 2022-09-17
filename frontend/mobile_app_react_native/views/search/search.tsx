@@ -4,8 +4,8 @@ import { UserContext } from "../../App";
 import { AppButton } from "../../components/buttons";
 import { metalic_seaweed } from "../../constants/colors";
 import createTable from "../../local_storage/createTable";
-import getData from "../../local_storage/getData";
 import getDBConnection from "../../local_storage/getDBConnection";
+import selection from "../../local_storage/selection/selection";
 import initialStorage from "../../local_storage/storage";
 
 export function SearchView({ navigation }:any){
@@ -17,7 +17,7 @@ export function SearchView({ navigation }:any){
                 const db = await getDBConnection();
                 await createTable(db);
                 //const results = await getData(db);
-                await getData(db, setResults)
+                await selection(db, setResults,"")
             }
             catch(e){
                  console.error(e)
