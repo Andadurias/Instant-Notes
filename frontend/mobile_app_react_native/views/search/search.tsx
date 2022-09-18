@@ -9,6 +9,7 @@ import selection from "../../local_storage/selection/selection";
 import initialStorage from "../../local_storage/storage";
 import Card from "./components/card";
 import { cardTable } from "../../constants/local_storage"
+import TagInput from "../../components/TagInput.tsx/TagInput";
 
 export function SearchView({ navigation }:any){
     const [results, setResults] = useState([ {"value": "A"}]);
@@ -32,6 +33,7 @@ export function SearchView({ navigation }:any){
     return (
         <View>
             <Text> You are at search view 🧐 </Text>
+            <TagInput/>
             {
                 results.map( r =>(
                         <View key={Math.random()}>
