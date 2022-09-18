@@ -7,6 +7,8 @@ import createTable from "../../local_storage/createTable";
 import getDBConnection from "../../local_storage/getDBConnection";
 import selection from "../../local_storage/selection/selection";
 import initialStorage from "../../local_storage/storage";
+import Card from "./components/card";
+import { cardTable } from "../../constants/local_storage"
 
 export function SearchView({ navigation }:any){
     const [results, setResults] = useState([ {"value": "A"}]);
@@ -33,7 +35,10 @@ export function SearchView({ navigation }:any){
             {
                 results.map( r =>(
                         <View key={Math.random()}>
-                            <Text>{r["content"]}</Text>
+                            <Card 
+                                content={r[cardTable.content]} 
+                                date={r[cardTable.creationTime]} 
+                            />                      
                         </View>
                     )
                 )
