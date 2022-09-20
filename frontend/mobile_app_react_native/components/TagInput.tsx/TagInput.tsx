@@ -14,7 +14,7 @@ const TagInput = ({tagsList, tagsListSetter}:tagInputInterface) => {
         <VStack style={style.container}>
             <Input 
                 onChangeText={setTag}
-                InputRightElement = {AddButton(tag, tagsList, tagsListSetter)}
+                InputRightElement = {AddButton(tag, setTag, tagsList, tagsListSetter)}
             />
             <HStack>
                 {
@@ -30,7 +30,8 @@ export default TagInput
 
 const style = StyleSheet.create({
     container :{
-        alignItems: "center"
+        alignItems: "center",
+        margin: 10
     }
 
 })

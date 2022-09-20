@@ -1,16 +1,12 @@
 import React, { useContext, useEffect, useState } from "react";
 import {  ScrollView, StyleSheet, StatusBar, Text, View } from "react-native";
 import { UserContext } from "../../App";
-import { AppButton } from "../../components/buttons";
-import { metalic_seaweed } from "../../constants/colors";
 import createTable from "../../local_storage/createTable";
 import getDBConnection from "../../local_storage/getDBConnection";
 import selection from "../../local_storage/selection/selection";
-import initialStorage from "../../local_storage/storage";
 import Card from "./components/card";
 import { cardTable } from "../../local_storage/design"
 import TagInput from "../../components/TagInput.tsx/TagInput";
-import { VStack, Button } from "native-base";
 
 export function SearchView({ navigation }:any){
     const [results, setResults] = useState([ {"value": "A"}]);
@@ -29,7 +25,7 @@ export function SearchView({ navigation }:any){
             }
         }
        list()
-    }, [context.data.updated, tagsList]);
+    }, [tagsList]);
     
     
     return (
