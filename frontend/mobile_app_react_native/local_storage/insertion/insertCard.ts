@@ -1,6 +1,6 @@
 // NOT TESTED
 import {SQLiteDatabase } from 'react-native-sqlite-storage';
-import { cardTable, tagsTable} from '../../constants/local_storage';
+import { cardTable, tagsTable} from '.././design';
 
 /**
  * insert content in Cards table

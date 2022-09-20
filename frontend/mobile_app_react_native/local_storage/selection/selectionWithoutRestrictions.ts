@@ -1,5 +1,5 @@
 import { SQLiteDatabase } from 'react-native-sqlite-storage';
-import { cardTable } from '../../constants/local_storage';
+import { cardTable } from '.././design';
 
 
 const selectionWithoutRestrictions = async (db: SQLiteDatabase, setData) => {

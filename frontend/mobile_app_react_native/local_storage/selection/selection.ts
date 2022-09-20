@@ -1,13 +1,18 @@
 import { enablePromise, SQLiteDatabase } from 'react-native-sqlite-storage';
-import { tagsRequirements } from '../../actions/create_card_view/submit_requirement_test';
+import { tagsProcessingListToList } from '../../actions/tagsProcessing/tagsProcessing';
+import selectionByTags from './selectionByTags';
 import selectionWithoutRestrictions from './selectionWithoutRestrictions';
 
-const selection = async (db: SQLiteDatabase, setData, tags) => {
+const selection = async (db: SQLiteDatabase, setData, tags: String[]) => {
   try{
-    // if there are no tags restrictions 
     enablePromise(true)
-    if(!tagsRequirements(tags))
-        await selectionWithoutRestrictions(db,setData)
+    // if there are no tags restrictions 
+    if(tags.length == 0 ){
+      await selectionWithoutRestrictions(db,setData)
+    }   
+    else { // tags is not void 
+      await selectionByTags(db, setData, tagsProcessingListToList(tags))
+    }
   }catch(error){
     console.error('There in an error in selection function',error)
   }

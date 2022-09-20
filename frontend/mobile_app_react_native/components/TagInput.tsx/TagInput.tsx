@@ -3,9 +3,12 @@ import { HStack, Input, Text, VStack} from "native-base";
 import { StyleSheet } from "react-native";
 import AddButton from "./AddButton";
 
-const TagInput = () => {
+interface tagInputInterface {
+    tagsList: String[];
+    tagsListSetter: any;
+}
+const TagInput = ({tagsList, tagsListSetter}:tagInputInterface) => {
     const [tag, setTag] = useState("")
-    const [tagsList, tagsListSetter] = useState([])
 
     return (
         <VStack style={style.container}>
@@ -20,7 +23,6 @@ const TagInput = () => {
                     )
                 }
             </HStack>
-
         </VStack>
     )
 }

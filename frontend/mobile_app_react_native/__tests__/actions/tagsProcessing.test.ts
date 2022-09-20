@@ -1,7 +1,7 @@
 import { expect } from 'chai';
 import 'mocha';
 
-import tagsProcessing from "../../actions/tagsProcessing/tagsProcessing"
+import tagsProcessing, { tagsProcessingListToList } from "../../actions/tagsProcessing/tagsProcessing"
 
 
 describe('Testing tags processing', () => {
@@ -12,6 +12,13 @@ describe('Testing tags processing', () => {
             ).deep.equal(
                 ["hola", "soy", "yo"]
             )
+        )
+    })
+    describe('List of tags to list of tags', () => {
+        it('Should be lower and trimmed', () =>
+            expect(
+                tagsProcessingListToList(["hOla ", " Y O "])
+            ).deep.equal(["hola","y o"])
         )
     })
 })

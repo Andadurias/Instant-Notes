@@ -1,5 +1,5 @@
 import {SQLiteDatabase} from 'react-native-sqlite-storage';
-import { cardTable, tableName, tagsTable, userInformationTable } from '../constants/local_storage';
+import { cardTable, tableName, tagsTable, userInformationTable } from './design';
 import dropTables from './dropTables';
 /**
  * Create user information table 
