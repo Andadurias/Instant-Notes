@@ -9,7 +9,7 @@ import { cardTable } from "../../local_storage/design"
 import TagInput from "../../components/TagInput.tsx/TagInput";
 
 export function SearchView({ navigation }:any){
-    const [results, setResults] = useState([ {"value": "A"}]);
+    const [results, setResults] = useState([]);
     const context = useContext(UserContext);
     const [tagsList, tagListSetter] = useState([])
 
@@ -38,7 +38,7 @@ export function SearchView({ navigation }:any){
             </View>
             <View style={styles.viewOfScrollView}>
                 <ScrollView style={styles.scrollView}>
-                {
+                { 
                     // Show the cards
                     results.map( 
                         r =>(
@@ -46,6 +46,7 @@ export function SearchView({ navigation }:any){
                                 key={Math.random()}
                                 content={r[cardTable.content]} 
                                 date={r[cardTable.creationTime]} 
+                                id={r['id']}
                             />                       
                         )
                     )    

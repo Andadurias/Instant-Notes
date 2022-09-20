@@ -33,7 +33,7 @@ const createCardsTable = async (db: SQLiteDatabase) => {
 }
 /**
  * Create tags table
- * Need to be done after the creation os the cards table due to the foreing key
+ * Need to be done after the creation os the cards table due to the foreign key
  * @param db 
  * @returns 
  */

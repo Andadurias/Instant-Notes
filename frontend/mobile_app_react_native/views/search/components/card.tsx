@@ -2,7 +2,7 @@ import React from "react";
 import { Box, VStack,Text, HStack } from "native-base";
 import { StyleSheet } from "react-native";
 
-function Card({content, date}){
+function Card({content, date, id}){
     return (
       <Box style={styles.card}>
         <VStack>
@@ -12,6 +12,8 @@ function Card({content, date}){
           <HStack>
             <Text>Date: </Text>
             <Text>{date}</Text>
+            <Text>  Id: </Text>
+            <Text>{id}</Text>
           </HStack>
         </VStack>
       </Box>           

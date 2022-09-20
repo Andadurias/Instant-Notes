@@ -8,22 +8,26 @@ const selectionByTags= async (db: SQLiteDatabase, setData, tags : String[]) => {
         const tag = tags.pop()
         const query = `SELECT
                             ${cardTable.tableName}.${cardTable.content} , 
-                            ${cardTable.tableName}.${cardTable.creationTime} 
+                            ${cardTable.tableName}.${cardTable.creationTime},
+                            ${cardTable.tableName}.${cardTable.id}
                         FROM 
                             ${cardTable.tableName}
-                        LEFT JOIN
+                        INNER JOIN
                             ${tagsTable.tableName}
                         ON 
                             ${cardTable.tableName}.${cardTable.id} 
                             = 
                             ${tagsTable.tableName}.${tagsTable.card}
-                        WHERE 
-                            ${tagsTable.tableName}.${tagsTable.tag}
-                            LIKE 
-                            '%${tag}%'
+                       
                         ORDER BY
                             ${cardTable.creationTime} DESC;
                         ;`;
+        /**
+         *  WHERE 
+                            ${tagsTable.tableName}.${tagsTable.tag}
+                            LIKE 
+                            '%${tag}%'
+         */
          console.log(query) 
 
         const results = await db.executeSql(query);
@@ -36,7 +40,8 @@ const selectionByTags= async (db: SQLiteDatabase, setData, tags : String[]) => {
               listOfResult.push(
                 { 
                     content: row[cardTable.content], 
-                    creationTime: row[cardTable.creationTime]
+                    creationTime: row[cardTable.creationTime],
+                    id:row[cardTable.id]
                 })
             }
         });

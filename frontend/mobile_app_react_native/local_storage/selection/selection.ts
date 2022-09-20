@@ -8,7 +8,6 @@ const selection = async (db: SQLiteDatabase, setData, tags: String[]) => {
   try{
     enablePromise(true)
     // if there are no tags restrictions 
-    Alert.alert(`You have entered to selection ${tags}`)
     if(tags.length == 0 ){
       await selectionWithoutRestrictions(db,setData)
     }   

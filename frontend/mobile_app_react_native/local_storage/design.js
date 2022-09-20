@@ -42,7 +42,7 @@ export const tagsTable = {
     card : card,
     // types
     tagType : 'TEXT NOT NULL',
-    cardType : 'TEXT NOT NULL',
+    cardType : 'INTEGER NOT NULL',
     // options
     options : 
     `FOREIGN KEY(${card}) REFERENCES ${cardTable.tableName}(${cardTable.id}),

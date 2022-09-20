@@ -12,6 +12,7 @@ const tagsProcessing = ( tagsInput : String, separator = ';') : String[]  => {
 export const tagsProcessingListToList = (tagsInput : String[]) :String[] => {
     const lowered = tagsInput.map( t => t.toLowerCase())
     const trimmed = lowered.map(t =>  t.trim())
+    
     return trimmed;
 }
 
