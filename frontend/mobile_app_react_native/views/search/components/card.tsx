@@ -7,7 +7,6 @@ function Card({content, date}){
       <Box style={styles.card}>
         <VStack>
           <Box>
-            <Text>Content: </Text>
             <Text>{content}</Text>
           </Box>
           <HStack>
@@ -24,8 +23,8 @@ const styles = StyleSheet.create({
     card: {
       borderWidth: 1,
       padding: 10,
-      margin: 10,
-      marginBottom: 0,
+      margin: 15,
+      marginTop: 0,
       bg:"primary.500"
     },
   });

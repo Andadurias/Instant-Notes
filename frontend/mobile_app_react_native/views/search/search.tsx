@@ -33,20 +33,15 @@ export function SearchView({ navigation }:any){
     
     
     return (
-        <View style={[styles.container, {
-            // Try setting `flexDirection` to `"row"`.
-            flexDirection: "column"
-          }]}>
-            <View style={{ flex: 1}}>
+        <View style={styles.container}>
+            <View style={styles.tagInputView}>
                 <TagInput 
                     tagsList={tagsList} 
                     tagsListSetter={tagListSetter}   
                 />
             </View>
-            <View style={{ flex: 6}}>
-                <ScrollView style={{
-                    paddingBottom: 5
-                }}>
+            <View style={styles.viewOfScrollView}>
+                <ScrollView style={styles.scrollView}>
                 {
                     // Show the cards
                     results.map( 
@@ -63,64 +58,22 @@ export function SearchView({ navigation }:any){
             </View>
           </View>
     )
-    /*
-        <View style={styles.container}>
-            <View style={styles.tagInput}>
-                <TagInput 
-                    tagsList={tagsList} 
-                    tagsListSetter={tagListSetter}
-                    
-                />
-            </View>
-            <SafeAreaView>
-            <ScrollView style={styles.scrollView}>
-                <VStack>
-                    {
-                        // Show the cards
-                        results.map( 
-                            r =>(
-                                <Card 
-                                    key={Math.random()}
-                                    content={r[cardTable.content]} 
-                                    date={r[cardTable.creationTime]} 
-                                />                       
-                            )
-                        )    
-                    }
-                </VStack>
-           </ScrollView>
-           </SafeAreaView>
-           <View style={}> </View>
-           <AppButton 
-           // TODO dispathc
-                onPress={()=> {
-                    context.setter({
-                            updated:context.data.updated * -1,
-                            userId: context.data.userId
-                        })
-                }}
-                title="update"
-                background_color={metalic_seaweed}
-           />
-        </View>
-    )
-    */
 }
 
 const styles = StyleSheet.create({
     container: {
       flex: 1,
       paddingTop: StatusBar.currentHeight,
+      flexDirection: "column"
+    },
+    tagInputView:{
+        flex: 1
+    },
+    viewOfScrollView :{
+        flex:7,
+        //marginBottom:5
     },
     scrollView: {
-    flex: 4,
-    paddingTop: StatusBar.currentHeight,
-      marginHorizontal: 20,
-    },
-    text: {
-      fontSize: 42,
-    },
-    tagInput :{
-        flex:1
+        margin: 5
     }
   });
