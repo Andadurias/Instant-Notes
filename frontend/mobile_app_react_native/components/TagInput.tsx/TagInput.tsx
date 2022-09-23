@@ -2,9 +2,10 @@ import React, { useState } from "react";
 import { HStack, Input, Text, VStack} from "native-base";
 import { StyleSheet } from "react-native";
 import AddButton from "./AddButton";
+import { interfaceTagStructure } from "../../views/search/search";
 
 interface tagInputInterface {
-    tagsList: String[];
+    tagsList: interfaceTagStructure;
     tagsListSetter: any;
 }
 const TagInput = ({tagsList, tagsListSetter}:tagInputInterface) => {
@@ -12,13 +13,14 @@ const TagInput = ({tagsList, tagsListSetter}:tagInputInterface) => {
 
     return (
         <VStack style={style.container}>
-            <Input 
+            <Input
+                value={tag} 
                 onChangeText={setTag}
                 InputRightElement = {AddButton(tag, setTag, tagsList, tagsListSetter)}
             />
             <HStack>
                 {
-                    tagsList.map(
+                    tagsList.list.map(
                         tag => <Text key={Math.random()}> {tag} </Text>
                     )
                 }

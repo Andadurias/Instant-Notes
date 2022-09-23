@@ -4,22 +4,6 @@ import { cardTable, tagsTable } from '.././design';
 
 const selectionWithoutRestrictions = async (db: SQLiteDatabase, setData) => {
   try{
-    // remove 
-    console.log("-- Tags table--- ")
-    const results2 = await db.executeSql(
-      `SELECT
-           * 
-      FROM 
-          ${tagsTable.tableName}
-      ;`);
-          results2.forEach(result => {
-          for (let index = 0; index < result.rows.length; index++) {
-            const row  = result.rows.item(index)
-            console.log(row)
-          }
-      });
-      console.log("---Tags table end ---")
-      // remove
       const results = await db.executeSql(
         `SELECT
              * 
@@ -42,7 +26,7 @@ const selectionWithoutRestrictions = async (db: SQLiteDatabase, setData) => {
                 })
             }
         });
-        console.log(listOfResult)
+        //console.log(listOfResult)
         setData(listOfResult);    
     }
     catch(error){
