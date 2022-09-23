@@ -9,7 +9,8 @@ const selectionByTags= async (db: SQLiteDatabase, setData, tags : String[]) => {
         const query = `SELECT
                             ${cardTable.tableName}.${cardTable.content} , 
                             ${cardTable.tableName}.${cardTable.creationTime},
-                            ${cardTable.tableName}.${cardTable.id}
+                            ${cardTable.tableName}.${cardTable.id},
+                            ${tagsTable.tableName}.${tagsTable.tag}
                         FROM 
                             ${cardTable.tableName}
                         INNER JOIN
@@ -18,17 +19,15 @@ const selectionByTags= async (db: SQLiteDatabase, setData, tags : String[]) => {
                             ${cardTable.tableName}.${cardTable.id} 
                             = 
                             ${tagsTable.tableName}.${tagsTable.card}
-                       
-                        ORDER BY
-                            ${cardTable.creationTime} DESC;
-                        ;`;
-        /**
-         *  WHERE 
+                        WHERE 
                             ${tagsTable.tableName}.${tagsTable.tag}
-                            LIKE 
+                        LIKE 
                             '%${tag}%'
-         */
-         console.log(query) 
+                        ORDER BY
+                            ${cardTable.creationTime} DESC
+                        ;`;
+        
+         //console.log(query) 
 
         const results = await db.executeSql(query);
 
@@ -45,7 +44,7 @@ const selectionByTags= async (db: SQLiteDatabase, setData, tags : String[]) => {
                 })
             }
         });
-        console.log(listOfResult)
+        //console.log(listOfResult)
         setData(listOfResult);    
     }
     catch(error){

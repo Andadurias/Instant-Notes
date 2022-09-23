@@ -8,10 +8,15 @@ import Card from "./components/card";
 import { cardTable } from "../../local_storage/design"
 import TagInput from "../../components/TagInput.tsx/TagInput";
 
+export interface interfaceTagStructure{
+    state : Boolean,
+    list : String[]
+}
 export function SearchView({ navigation }:any){
     const [results, setResults] = useState([]);
     const context = useContext(UserContext);
-    const [tagsList, tagListSetter] = useState([])
+    const taglistStructure = { state : true, list: []}
+    const [tagsList, tagListSetter] = useState(taglistStructure)
 
     useEffect ( () => {
         const list =  async () => {
@@ -25,9 +30,7 @@ export function SearchView({ navigation }:any){
             }
         }
        list()
-    }, [tagsList]);
-    
-    
+    }, [tagsList.state]);
     return (
         <View style={styles.container}>
             <View style={styles.tagInputView}>
