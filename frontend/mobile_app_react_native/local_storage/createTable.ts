@@ -29,7 +29,14 @@ const createCardsTable = async (db: SQLiteDatabase) => {
         ${cardTable.content} ${cardTable.contentType},
         ${cardTable.creationTime} ${cardTable.creationTimeType}
     );`
-  return  db.executeSql(cardTableCreation);
+    const cardTableCreation2 = 
+    `CREATE TABLE IF NOT EXISTS Cards(
+      cardID INTEGER PRIMARY KEY AUTOINCREMENT,
+      content TEXT NOT NULL,
+      creationTime TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL
+  );
+    `;
+  return  db.executeSql(cardTableCreation2);
 }
 /**
  * Create tags table
@@ -44,17 +51,46 @@ const createTagsTable = async (db: SQLiteDatabase) => {
         ${tagsTable.card} ${tagsTable.cardTye},
         ${tagsTable.options}
     );`
-    return db.executeSql(tagCreation);
+    const tagCreation2 = 
+    `CREATE TABLE IF NOT EXISTS Tags(
+      tag text NOT NULL,
+      cardID INTEGER NOT NULL,
+      FOREIGN KEY (cardID) REFERENCES Cards(cardID),
+      PRIMARY KEY(tag, cardID)
+  );
+    `;
+    return db.executeSql(tagCreation2);
+}
+
+const showTables = async (db) => {
+  const query = 
+  `SELECT 
+  name
+  FROM 
+    sqlite_schema
+  WHERE 
+    type ='table' AND 
+    name NOT LIKE 'sqlite_%';`
+    return db.executeSql(query)
 }
 
 const createTables = async (db: SQLiteDatabase) => {
   // drop tables
   // discommend 
-  dropTables(db);
+  // dropTables(db);
     try {
       await createUserInformationTable(db);
       await createCardsTable(db);
       await createTagsTable(db);
+
+      const results = await showTables(db);
+      console.log("The tables are: ")
+      results.forEach(result => {
+        for (let index = 0; index < result.rows.length; index++) {
+          const row  = result.rows.item(index)
+          console.log(row);
+        }
+    });
     } catch (error) {
       console.error(error)
     }
