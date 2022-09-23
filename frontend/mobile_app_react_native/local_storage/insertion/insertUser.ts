@@ -1,6 +1,6 @@
 // NOT TESTED
 import {SQLiteDatabase } from 'react-native-sqlite-storage';
-import { userInformationTable} from '../../constants/local_storage';
+import { userInformationTable} from '.././design';
 
 interface dataItem {
     userName : String,

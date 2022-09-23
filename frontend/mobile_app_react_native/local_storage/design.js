@@ -29,7 +29,7 @@ export const cardTable = {
     content : 'content',
     creationTime : 'creationTime',
     // types
-    idType : 'INTEGER PRIMARY KEY',
+    idType : 'INTEGER PRIMARY KEY AUTOINCREMENT',
     contentType : 'TEXT NOT NULL', // this is the only value we have to insert 
     creationTimeType : 'TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL'
 }
@@ -42,7 +42,7 @@ export const tagsTable = {
     card : card,
     // types
     tagType : 'TEXT NOT NULL',
-    cardType : 'TEXT NOT NULL',
+    cardType : 'INTEGER NOT NULL',
     // options
     options : 
     `FOREIGN KEY(${card}) REFERENCES ${cardTable.tableName}(${cardTable.id}),

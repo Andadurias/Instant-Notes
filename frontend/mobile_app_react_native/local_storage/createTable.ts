@@ -1,5 +1,5 @@
 import {SQLiteDatabase} from 'react-native-sqlite-storage';
-import { cardTable, tableName, tagsTable, userInformationTable } from '../constants/local_storage';
+import { cardTable, tableName, tagsTable, userInformationTable } from './design';
 import dropTables from './dropTables';
 /**
  * Create user information table 
@@ -26,13 +26,14 @@ const createCardsTable = async (db: SQLiteDatabase) => {
   const cardTableCreation = 
     `CREATE TABLE IF NOT EXISTS ${cardTable.tableName}(
         ${cardTable.id} ${cardTable.idType},
-        ${cardTable.content} ${cardTable.contentType}
+        ${cardTable.content} ${cardTable.contentType},
+        ${cardTable.creationTime} ${cardTable.creationTimeType}
     );`
   return  db.executeSql(cardTableCreation);
 }
 /**
  * Create tags table
- * Need to be done after the creation os the cards table due to the foreing key
+ * Need to be done after the creation os the cards table due to the foreign key
  * @param db 
  * @returns 
  */
@@ -49,7 +50,7 @@ const createTagsTable = async (db: SQLiteDatabase) => {
 const createTables = async (db: SQLiteDatabase) => {
   // drop tables
   // discommend 
-  //dropTables(db);
+  // dropTables(db);
     try {
       await createUserInformationTable(db);
       await createCardsTable(db);

@@ -1,54 +1,76 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Button, Text, View } from "react-native";
+import {  ScrollView, StyleSheet, StatusBar, Text, View } from "react-native";
 import { UserContext } from "../../App";
-import { AppButton } from "../../components/buttons";
-import { metalic_seaweed } from "../../constants/colors";
 import createTable from "../../local_storage/createTable";
-import getData from "../../local_storage/getData";
 import getDBConnection from "../../local_storage/getDBConnection";
-import initialStorage from "../../local_storage/storage";
+import selection from "../../local_storage/selection/selection";
+import Card from "./components/card";
+import { cardTable } from "../../local_storage/design"
+import TagInput from "../../components/TagInput.tsx/TagInput";
 
 export function SearchView({ navigation }:any){
-    const [results, setResults] = useState([ {"value": "A"}]);
+    const [results, setResults] = useState([]);
     const context = useContext(UserContext);
+    const [tagsList, tagListSetter] = useState([])
+
     useEffect ( () => {
         const list =  async () => {
             try{
                 const db = await getDBConnection();
                 await createTable(db);
-                //const results = await getData(db);
-                await getData(db, setResults)
+                await selection(db, setResults,tagsList)
             }
             catch(e){
                  console.error(e)
             }
         }
        list()
-    }, [context.data.updated]);
+    }, [tagsList]);
     
     
     return (
-        <View>
-            <Text> You are at search view 🧐 </Text>
-            {
-                results.map( r =>(
-                        <View key={Math.random()}>
-                            <Text>{r["content"]}</Text>
-                        </View>
-                    )
-                )
-           }
-           <AppButton 
-           // TODO dispathc
-                onPress={()=> {
-                    context.setter({
-                            updated:context.data.updated * -1,
-                            userId: context.data.userId
-                        })
-                }}
-                title="update"
-                background_color={metalic_seaweed}
-           />
-        </View>
+        <View style={styles.container}>
+            <View style={styles.tagInputView}>
+                <TagInput 
+                    tagsList={tagsList} 
+                    tagsListSetter={tagListSetter}   
+                />
+            </View>
+            <View style={styles.viewOfScrollView}>
+                <ScrollView style={styles.scrollView}>
+                { 
+                    // Show the cards
+                    results.map( 
+                        r =>(
+                            <Card 
+                                key={Math.random()}
+                                content={r[cardTable.content]} 
+                                date={r[cardTable.creationTime]} 
+                                id={r['id']}
+                            />                       
+                        )
+                    )    
+                }
+                </ScrollView>
+            </View>
+          </View>
     )
 }
+
+const styles = StyleSheet.create({
+    container: {
+      flex: 1,
+      paddingTop: StatusBar.currentHeight,
+      flexDirection: "column"
+    },
+    tagInputView:{
+        flex: 1
+    },
+    viewOfScrollView :{
+        flex:7,
+        //marginBottom:5
+    },
+    scrollView: {
+        margin: 5
+    }
+  });

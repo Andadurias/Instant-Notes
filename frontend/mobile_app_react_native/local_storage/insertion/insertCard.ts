@@ -1,6 +1,6 @@
 // NOT TESTED
 import {SQLiteDatabase } from 'react-native-sqlite-storage';
-import { cardTable, tagsTable} from '../../constants/local_storage';
+import { cardTable, tagsTable} from '.././design';
 
 /**
  * insert content in Cards table
@@ -14,12 +14,12 @@ const insertContent = async (db: SQLiteDatabase, content : String ) => {
         (${cardTable.content})
         values 
        ('${content}');` ;
-    return db.executeSql(insertQuery);
 
+    return db.executeSql(insertQuery);
 }
-// TODO IN ARRAY TAG AND STRING
+
 const insertTag = async (
-    db: SQLiteDatabase, tags: String[], cardID  ) => {
+    db: SQLiteDatabase, tags: String[], cardID ) => {
 
     const  values =  tags.reduce(
         (previous, current) => previous + "," + `('${current}', ${cardID}) \n`,
@@ -41,8 +41,8 @@ interface cardData {
 }
 const insertCard = async (db: SQLiteDatabase, card : cardData ) => {  
     try {
-        const cardInsertion = await insertContent(db, card.content)
-        await insertTag(db, card.tags, cardInsertion[0].insertId)  
+        const cardInsertion = await insertContent(db, card.content);
+        const insert = await insertTag(db, card.tags, cardInsertion[0].insertId)
     } catch (error) {
        console.error(error) 
     }
