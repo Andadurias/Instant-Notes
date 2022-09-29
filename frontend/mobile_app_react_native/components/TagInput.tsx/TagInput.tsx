@@ -1,8 +1,10 @@
 import React, { useState } from "react";
-import { HStack, Input, Text, VStack} from "native-base";
+import { HStack, Input, Tag, Text, VStack} from "native-base";
 import { StyleSheet } from "react-native";
 import AddButton from "./AddButton";
 import { interfaceTagStructure } from "../../views/search/search";
+import CustomTag from "./CustomTag";
+import stringToHash from "../../actions/utils/stringToHash";
 
 interface tagInputInterface {
     tagsList: interfaceTagStructure;
@@ -20,8 +22,12 @@ const TagInput = ({tagsList, tagsListSetter}:tagInputInterface) => {
             />
             <HStack>
                 {
+                    //TODO añadir aquí como botón el tag, la acción coge la tagList y "actualiza el tag sin la lista".
+
                     tagsList.list.map(
-                        tag => <Text key={Math.random()}> {tag} </Text>
+                        tag => <CustomTag key={stringToHash(tag)} 
+                        tag={tag} tagsList={tagsList} 
+                        tagsListSetter={tagsListSetter} />
                     )
                 }
             </HStack>
@@ -35,5 +41,4 @@ const style = StyleSheet.create({
         alignItems: "center",
         margin: 10
     }
-
 })
