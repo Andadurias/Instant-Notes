@@ -14,6 +14,22 @@ make build
 
 it will launch an IOS emulator. 
 
+### Android emulation on a device   
+
+1. Connect your device 
+2. Run: 
+
+```bash  
+cd ./frontend/mobile_app_react_native/
+make android  
+```
+
+Source: 
+
+-[react native run on android device](https://reactnative.dev/docs/running-on-device)
+
+
+
 ## Contributions  
 
 Do you want to contribute? Have any doubt? Don`t hesitate to contact me 🥰  
