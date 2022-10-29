@@ -1,6 +1,6 @@
-# Regomello  
+# Instant Notes 
 
-✨**Regomello**✨ is a micro journaling app to reduce the effort of taking notes, managing memories and connecting ideas
+✨**Instant notes**✨ is a micro journaling app to reduce the effort of taking notes, managing memories and connecting ideas
 
 ## How to start the project  
 
