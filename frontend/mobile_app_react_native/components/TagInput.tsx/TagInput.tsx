@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { HStack, Input, Tag, Text, VStack} from "native-base";
+import { HStack, Input, VStack} from "native-base";
 import { StyleSheet } from "react-native";
 import AddButton from "./AddButton";
 import { interfaceTagStructure } from "../../views/search/search";
@@ -23,7 +23,6 @@ const TagInput = ({tagsList, tagsListSetter}:tagInputInterface) => {
             <HStack>
                 {
                     //TODO añadir aquí como botón el tag, la acción coge la tagList y "actualiza el tag sin la lista".
-
                     tagsList.list.map(
                         tag => <CustomTag key={stringToHash(tag)} 
                         tag={tag} tagsList={tagsList} 

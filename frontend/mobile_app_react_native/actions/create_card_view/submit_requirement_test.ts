@@ -1,7 +1,5 @@
-const requirements = (tags:String, cards:String):Boolean => {
+const requirements = (tags:String[], cards:String):Boolean => {
     return (
-        tagsRequirements(tags)
-        &&
         cardsRequirements(cards)
     )
 }

@@ -7,15 +7,15 @@ import insertCard from "../../local_storage/insertion/insertCard";
 import createTables from "../../local_storage/createTable";
 import tagsProcessing from "../tagsProcessing/tagsProcessing";
 
-const submitAction = async (tags:String, text:String, tagsSetter, textSetter) => {
+const submitAction = async (tags, text:String, tagsSetter, textSetter) => {
     //Alert.alert(text)
         if (requirements(tags, text)){ // Field not empty
             enablePromise(true)
             try{
                 const db = await getDBConnection();
                 await createTables(db);
-                await insertCard(db, {tags: tagsProcessing(tags), content: text})
-                tagsSetter("")
+                await insertCard(db, {tags: tags, content: text})
+                tagsSetter({state : true, list: []})
                 textSetter("")
             } catch(error){
                 Alert.alert("Error")
