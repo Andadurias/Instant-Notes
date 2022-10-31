@@ -6,7 +6,7 @@ export const TextArea = ({text, textSetter}) => {
     return (
         <TextInput
             editable
-            multiline
+            multiline={true}
             onChangeText={input => textSetter(input)}
             placeholder={views.create_card.text_area.write_card}
             style={styles.input}
@@ -21,5 +21,6 @@ const styles = StyleSheet.create({
       margin: 12,
       borderWidth: 1,
       padding: 10,
+      textAlignVertical: 'top'
     },
   });
