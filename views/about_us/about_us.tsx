@@ -1,6 +1,5 @@
-import { View } from "native-base"
 import React from "react"
-import { Text } from "react-native-svg"
+import { Text, View } from "react-native";
 import "../../components/buttons"
 import { menu } from "../../constants/languages/EN/menu"
 

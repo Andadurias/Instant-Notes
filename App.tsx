@@ -7,15 +7,16 @@ import { CreateCardView } from './views/create_card/create_card';
 import { menu } from './constants/languages/EN/menu';
 import { RemaindersView } from './views/remainders/remainders';
 import { SearchView } from './views/search/search';
-//import initialStorage from './local_storage/storage';
+import initialStorage from './local_storage/storage';
 import { NativeBaseProvider } from 'native-base';
 import { AboutUs } from './views/about_us/about_us';
 const Stack = createNativeStackNavigator();
-//export const UserContext = createContext();
+export const UserContext = createContext({});
 
 function App() {
-  //const [storage, storageSetter] = useState(initialStorage)
+  const [storage, storageSetter] = useState(initialStorage)
   return (
+    <UserContext.Provider value={{data:storage, setter:storageSetter}}>
       <NativeBaseProvider>
         <NavigationContainer>
           <Stack.Navigator initialRouteName={menu.home} >
@@ -26,7 +27,7 @@ function App() {
           </Stack.Navigator>
         </NavigationContainer>
       </NativeBaseProvider>
+    </UserContext.Provider>
   );
 }
-
 export default App;
